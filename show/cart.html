@@ -1,0 +1,151 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <title>Choppee - Cart</title>
+
+    <!-- Bootstrap core CSS -->
+	<link href="css/bootstrap.min.css" rel="stylesheet">
+    <!-- Custom styles for this template -->
+    <link href="css/home.css" rel="stylesheet">
+</head>
+<body>
+	<div class="d-flex">
+		<!-- Sidebar -->
+		<div class="d-flex flex-column align-items-center p-2" id="sidebar-wrapper">
+			<div>&nbsp;</div>
+			<div>&nbsp;</div>
+			<div>&nbsp;</div>
+			<div>&nbsp;</div>
+			<div>&nbsp;</div>
+			<div>&nbsp;</div>
+			<div>&nbsp;</div>
+			<div>&nbsp;</div>
+			<h1 style="color: white">Choppee</h1>
+			<div>&nbsp;</div>
+			<div class="nav-item">
+				<a href="home.html" class="nav-link-menu p-2 mt-3"><span data-feather="home"></span> Home</a>
+				<a href="#" class="nav-link-menu p-2 mt-3"><span data-feather="users"></span> Customers</a>
+				<a href="product.html" class="nav-link-menu p-2 mt-3"><span data-feather="shopping-bag"></span> Products</a>
+			</div>
+			<div class="mt-auto">
+				<div class="d-flex flex-column">
+				<a style="color: #c3cfe2;" href="statusUpdation.html">Sales Management</a>
+					<div class="d-flex" style="color: #fff;">
+						<img src="pic/user1.png" alt="user_pic" class="rounded-circle user-pic">
+						<div class="d-flex flex-column">
+							<span class="font-weight-bold">Sales1</span>
+							<!-- <span>VP Sale</span> -->
+							<div class="dropdown">
+								<button class="btn btn-primary btn-sm dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+								VP Sale
+								</button>
+								<div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+									<a class="dropdown-item" href="#">__ Sale</a>
+									<a class="dropdown-item" href="#">__ Sale</a>
+									<a class="dropdown-item" href="#">__ Sale</a>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+		
+		<div class="bg-light d-flex align-items-center">
+			<div class="d-flex flex-column p-2">
+				<h1>Choppee</h1>
+			</div>
+		</div>
+		<!-- /#sidebar-wrapper -->
+
+		<!-- Page Content -->
+		<div id="page-content-wrapper">
+			<nav class="navbar navbar-expand-lg navbar-light bg-light border-bottom">
+				<form class="form-inline w-100">
+					<input class="form-control form-control-light rounded-pill w-100" type="search" placeholder="Search" aria-label="Search">
+				</form>
+				<ul class="navbar-nav px-3">
+					<li class="nav-item text-nowrap">
+						<a class="nav-link" href="#"><span data-feather="shopping-cart"></span></a>
+					</li>
+				</ul>
+				<ul class="navbar-nav px-3">
+					<li class="nav-item text-nowrap">
+						<a class="nav-link" href="#"><span data-feather="log-out"></span></a>
+					</li>
+				</ul>
+			</nav>			
+			<div class="container-fluid">
+				<div class="row m-4">
+					<div class="col content-element shadow">
+						<div class="m-4">
+							<nav class="navbar navbar-expand-lg navbar-light">
+								<p class="mb-0 font-weight-bolder h2">Products</p>
+							</nav>
+						</div>
+						<div class="m-4">
+							<table class="table" style="width: 100%;">
+								<thead>
+									<tr>
+										<th scope="col">ID</th>
+										<th scope="col">PRODUCT</th>
+										<th scope="col">IN-STOCK</th>
+										<th scope="col">PRICE</th>
+										<th scope="col">AMOUNT</th>
+									</tr>
+								</thead>
+								<tbody>
+									<tr>
+										<th scope="row" class="align-middle">356121</th>
+										<td class="align-middle"><img src="pic/product1.jpg" class="product-pic"> Bathing Shampoo</td>
+										<td class="align-middle">451</td>
+										<td class="align-middle">$654</td>
+										<td class="align-middle">2</td>
+									</tr>
+									<tr>
+										<th scope="row" class="align-middle">356122</th>
+										<td class="align-middle"><img src="pic/product2.jpg" class="product-pic"> Running Shoes</td>
+										<td class="align-middle">0</td>
+										<td class="align-middle">$654</td>
+										<td class="align-middle">1</td>
+									</tr>
+									<tr>
+										<th scope="row" class="align-middle">356123</th>
+										<td class="align-middle"><img src="pic/product3.jpg" class="product-pic"> Toilet Papers</td>
+										<td class="align-middle">560</td>
+										<td class="align-middle">$654</td>
+										<td class="align-middle">9</td>
+									</tr>
+								</tbody>
+							</table>
+						</div>
+						<div class="row m-4 mt-5">
+							<div class="col">
+								<form>
+									<div class="form-row justify-content-center">
+										<div class="col-3">
+											<input type="text" class="form-control" placeholder="Promo Code...">
+										</div>
+										<div class="col-auto">
+											<button type="submit" class="btn rounded-pill btn-order-table">Check out</button>
+										</div>
+									</div>
+								</form>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+	
+	<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
+	<script>window.jQuery || document.write('<script src="../assets/js/vendor/jquery.slim.min.js"><\/script>')</script>
+	<script src="js/bootstrap.bundle.min.js"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/feather-icons/4.9.0/feather.min.js"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.7.3/Chart.min.js"></script>
+	<script src="js/dashboard.js"></script>
+</body>
+</html>
