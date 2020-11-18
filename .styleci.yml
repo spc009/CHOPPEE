@@ -5,6 +5,7 @@ php:
   disabled:
     - length_ordered_imports
     - unused_use
+    
   finder:
     not-name:
       - index.php
