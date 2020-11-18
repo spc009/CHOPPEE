@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?><sqlb_project><db path="D:/ParryZ/1-2563/261343 database lab/work space/CHOPPEE/work-space/CHOPPEE/database/CHOPPEE.db" readonly="0" foreign_keys="1" case_sensitive_like="0" temp_store="0" wal_autocheckpoint="1000" synchronous="2"/><attached/><window><main_tabs open="browser structure pragmas query" current="3"/></window><tab_structure><column_width id="0" width="300"/><column_width id="1" width="0"/><column_width id="2" width="125"/><column_width id="3" width="1743"/><column_width id="4" width="0"/><expanded_item id="0" parent="1"/><expanded_item id="1" parent="1"/><expanded_item id="2" parent="1"/><expanded_item id="3" parent="1"/></tab_structure><tab_browse><current_table name="4,8:mainproducts"/><default_encoding codec=""/><browse_table_settings/></tab_browse><tab_sql><sql name="SQL 1">CREATE TABLE &quot;products&quot; (
+	&quot;productCode&quot;	TEXT,
+	&quot;productName&quot;	TEXT,
+	&quot;productLine&quot;	TEXT,
+	&quot;productScale&quot;	TEXT,
+	&quot;productVender&quot;	TEXT,
+	&quot;productDescription&quot;	TEXT,
+	&quot;quantityInStock&quot;	INTEGER,
+	&quot;buyPrice&quot;	INTEGER,
+	&quot;MSRP&quot;	INTEGER,
+	PRIMARY KEY(&quot;productCode&quot;)
+);</sql><sql name="SQL 2">CREATE TABLE &quot;orders&quot; (
+	&quot;orderNumber&quot; INTEGER,
+	&quot;orderDate&quot;	TEXT,
+	&quot;requireDate&quot;	TEXT,
+	&quot;shipedDate&quot;	Text,
+	&quot;status&quot;	TEXT,
+	&quot;comments&quot;	TEXT,
+	&quot;customerNumber&quot;	TEXT,
+	PRIMARY KEY(&quot;orderNumber&quot;)
+)</sql><sql name="SQL 3">INSERT INTO (productCode,productName,productLine,productScale,productVender,productDescription
+</sql><current_tab id="2"/></tab_sql></sqlb_project>

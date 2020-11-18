@@ -1,6 +1,6 @@
 const sqlite3 = require('sqlite3').verbose();
 
-let db = new sqlite3.Database('./database/CHOPPEE.db',(err)=>{
+let db = new sqlite3.Database('./database/classicmodels.sqlite',(err)=>{
 
     if(err){
         console.log(err.message)
