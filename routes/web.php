@@ -51,6 +51,7 @@ Route::get('/Subtotal', 'Datacontroller@Subtotal');
 //### Update Function ###
 Route::post('/updateship/{code}','DataController@updateship');
 Route::post('/updateProduct/{code}','DataController@updateProduct');
+Route::get('/shippingaddr/{code}','DataController@shippingaddr');
 Route::post('/updateEm/{code}','DataController@updateEm');
 Route::post('/NumberCart','DataController@NumberCart');
 Route::post('/getPro','DataController@getPromotion');

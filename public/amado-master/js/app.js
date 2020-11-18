@@ -13,13 +13,15 @@ function showCustomerAddress(input, editAble,redioname,id) {
         x = JSON.parse(input);
         var n = 0;
         var tableaddress = `<table style="width: 100%"><tbody>`;
+        i = 0;
         x.forEach( function (a) {
+            console.log(a)
             tableaddress += `
-            <tr>`;
+            <tr >`;
                 if(editAble != true){tableaddress += `
                 <td style="text-align: left; margin-right: 10px; max-width: 10%; border-bottom: none;">
                     <label class="radio-container">
-                        <input type="radio" name="${redioname}" value="${n}">
+                        <input type="radio" name="${redioname}" value="${a.addressNumber}">
                         <span class="checkmark"></span>
                     </label>
                 </td>`;}
@@ -495,6 +497,7 @@ function PopUpodstatus(a){
     }
     });
 }
+
 //Product
 function PopUpProduct(a, editAble){
     //showProductDetail(a) = PopUpProduct(a, false)
@@ -644,6 +647,35 @@ function PopUpAddaddress(a){
     document.getElementById("id01").innerHTML = box;
     document.getElementById("id01").style.display = 'block';
 }
+
+function PopUpAddr(a) {
+    $.ajaxSetup({
+        headers: {
+            'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+        }
+    });
+    console.log(a);
+    $.ajax({
+        type: 'get',
+        url: '/shippingaddr/' + a,
+        success: function (data) {
+            var b = JSON.parse(data);
+            // console.log(b);
+           var box =  `<td style="text-align: left; flex: 0 0 100%; width: 90%; max-width: 90%; border-bottom: none">
+                    <p>${b[0][0].addressLine1} ${b[0][0].addressLine2}<br>${b[0][0].city} ${b[0][0].state} ${b[0][0].country} ${b[0][0].postalCode}</p>
+            </td>  `;
+    document.getElementById("SA").innerHTML = box;
+    document.getElementById("SA").style.display = 'block';
+    var box =  `<td style="text-align: left; flex: 0 0 100%; width: 90%; max-width: 90%; border-bottom: none">
+                    <p>${b[0][0].addressLine1} ${b[1][0].addressLine2}<br>${b[1][0].city} ${b[1][0].state} ${b[1][0].country} ${b[1][0].postalCode}</p>
+            </td>  `;
+    document.getElementById("BA").innerHTML = box;
+    document.getElementById("BA").style.display = 'block';
+        }  
+    });
+
+}
+
 //------------end show script------------//
 
 //------------drop-down------------//
@@ -1163,6 +1195,7 @@ function order_calculator(){
 function ShowShipping(input) {
     var shipping_table = "";
     input.forEach(function (a) {
+        // console.log(a)
         shipping_table += `
         <tr>
             <td><h5>${a.orderNumber}</h5></td>
@@ -1172,6 +1205,7 @@ function ShowShipping(input) {
             <td><h5>${a.status}</h5></td>
             <td><h5>${a.comments}</h5></td>
             <td><h5>${a.customerNumber}</h5></td>
+            <td><a href="#" onclick="PopUpbgAddr(),PopUpAddr(${a.orderNumber})" class="btn amado-btn" style="min-width:50px">Address</a></td>            
             <td><a href="#" onclick="PopUpodDetail(),ShowOdDetail(${a.orderNumber})" class="btn amado-btn" style="min-width:50px">Detail</a></td>
             <td><a href="#" onclick="PopUpodstatus(${a.orderNumber})" class="btn amado-btn" style="min-width:50px">Edit</a></td>
         </tr>
@@ -1220,11 +1254,12 @@ function PopUpodDetail() {
             <div>
             <div class="cart-head mt-50 mb-10">
                 <h2>Order Details</h2>
+                <p>address : </p>
             </div>
             <div class="table">
                 <table>
                     <thead>
-                        <tr style="background-color:#fbb710">
+                        <tr style="background-color:#84DBFF">
                             <th >ProductCode</th>
                             <th >QuantityOrdered</th>
                             <th >PriceEach</th>
@@ -1244,6 +1279,51 @@ function PopUpodDetail() {
     document.getElementById("popoddetail").style.display = 'block';
 }
 
+
+function PopUpbgAddr() {
+    var status = `
+        <span onclick="document.getElementById('popoddetail').style.display='none'"
+            class="close" title="Close Modal">&times;
+        </span>
+        <form class="modal-content animate" action="/action_page.php">
+        <div class="cart-table-area section-padding-60">
+        <div class="container-fluid">
+            <div class="row">
+            <div>
+            <div class="cart-head mt-50 mb-10">
+                <h2>Address Details</h2>
+            </div>
+            <div class="table">
+                <table>
+                    <thead>
+                        <tr style="background-color:#84DBFF">
+                            <th>Shipping</th>
+                            <th> Address</th>
+                        </tr>
+                    </thead>
+                    <tbody id="SA">
+                    </tbody>
+                </table>
+                <br><br>
+                <table>
+                    <thead>
+                        <tr style="background-color:#84DBFF">
+                            <th>Billing</th> 
+                            <th>Address</th>
+                        </tr>
+                    </thead>
+                    <tbody id="BA">
+                    </tbody>
+                </table>
+            </div>
+            </div>
+            </div>
+        </div>
+        </div>
+        </form>`;
+    document.getElementById("popoddetail").innerHTML = status;
+    document.getElementById("popoddetail").style.display = 'block';
+}
 
 
 function AddToOrder(){

@@ -79,9 +79,11 @@ class DataController extends Controller
         return json_encode($Qty);
     }
 
+
     public function deleteCart(){
         DB::delete('delete from cart');
     }
+
     public function editProduct($code){
         $jdata = DB::select("select * from products where productCode = '$code'");
         $jsoneditProduct = json_encode($jdata);
@@ -113,14 +115,19 @@ class DataController extends Controller
     //and deleteFlag = 'flase'
     public function getAddress($code){
         // $address = DB::select("select * from addresses where customerNumber like '$code' and deleteFlag = 'false'");
-        $address = DB::select("select addressLine1,addressLine2,city,state,postalCode,country from customers where customerNumber like '$code' ");
+        $address = DB::select("select addressLine1,addressLine2,city,state,postalCode,country,addressNumber from addresses where customerNumber like '$code' ");
 
         $point = DB::select("select points from customers where customerNumber like '$code'");
         return [json_encode($address),json_encode($point)];
     }
     public function addAddress(Request $request, $code){
-        DB::insert("insert into addresses(addressLine1,addressLine2,city,state,postalCode,country,customerNumber,addressNumber,deleteFlag)
-            values ('$request->addrline1','$request->addrline2','$request->city','$request->state','$request->postalcode','$request->country','$code','$request->addrnum','false')" );
+        $c = DB::select("select count(*) as c from addresses where customerNumber = '$code'");
+        $a = 0;
+        if($c != null){
+            $a = $c->c;
+        }
+        DB::insert("insert into addresses(addressLine1,addressLine2,city,state,postalCode,country,customerNumber,addressNumber)
+            values ('$request->addrline1','$request->addrline2','$request->city','$request->state','$request->postalcode','$request->country','$code','$a')" );
         $product = DB::select("select * from addresses where customerNumber = '$code'");
         $jsonp = json_encode($product);
         return $jsonp;
@@ -146,15 +153,15 @@ class DataController extends Controller
         $ProductCode = DB :: select('select distinct productCode from cart ');
         $x = $OrderNumber[0];
         $date = date('Y-m-d',time());
-        // DB::insert("
-        //     insert into orders(orderNumber,orderDate,requiredDate, status, customerNumber,shippingAddr, billingAddr)
-        //     values ('$x->orderNumber','$date','$request->shippingDate','in progress','$request->customerNumber','$request->shippingAddr', '$request->billingAddr')
-        // ");
-
         DB::insert("
-        insert into orders(orderNumber,orderDate,requiredDate, status, customerNumber,comments,shippedDate)
-        values ('$x->orderNumber','$date','$request->shippingDate','in progress','$request->customerNumber','','')
+            insert into orders(orderNumber,orderDate,requiredDate, status, customerNumber,shippingAddr, billingAddr)
+            values ('$x->orderNumber','$date','$request->shippingDate','in progress','$request->customerNumber','$request->shippingAddr', '$request->billingAddr')
         ");
+
+        // DB::insert("
+        // insert into orders(orderNumber,orderDate,requiredDate, status, customerNumber,comments,shippedDate)
+        // values ('$x->orderNumber','$date','$request->shippingDate','in progress','$request->customerNumber','','')
+        // ");
 
         // insert order details each row from cart to orderdetails
         $i = 1;
@@ -192,8 +199,22 @@ class DataController extends Controller
          return view('welcome');
     }
 
+
+    // public function getAdd(){
+    //     $address = DB::select("select customerNumber,addressLine1,addressLine2,city,state,postalCode,country from customers");
+    //     foreach($address as $A){
+    //         // $p = $P->productCode ;
+    //         DB:: insert("
+    //             insert into addresses(customerNumber,addressLine1,addressLine2,city,state,postalCode,country)
+    //             values ('$A->cutomerNumber','$A->addressLine1', '$A->addressLine2', '$A->city', '$A->state','$A->postalCode','$A->couuntry')
+    //         ");
+    //     }
+        
+    // }
+
     public function login(Request $request)
     {
+        // getAdd();
         // normal function
         $x = sha1($request->psw);
         $employeekey = DB::select("select * from passwords where employeeNumber like '$request->uname' and passwords like '$x'");
@@ -319,6 +340,18 @@ class DataController extends Controller
         [$request->shipdate,$request->odstatus,$request->shipcom,$code]);
         $data = DB::select('select * from orders');
         $jsonProduct = json_encode($data);
+        // $jsonProduct = json_encode(array($data,$addr));
+        return $jsonProduct;
+    }
+
+    public function shippingaddr($code){
+
+        $a = DB::select("select customerNumber,shippingAddr,billingAddr from orders where orderNumber = '${code}'");
+        $order = $a[0];
+        $shippingAddr = DB::select("select addressLine1,addressLine2,city,state,postalCode,country from addresses where customerNumber = '$order->customerNumber' and addressNumber = '$order->shippingAddr'");
+        $billingAddr = DB::select("select addressLine1,addressLine2,city,state,postalCode,country from addresses where customerNumber = '$order->customerNumber' and addressNumber = '$order->billingAddr'");
+        // $jsonProduct = json_encode($data);
+        $jsonProduct = json_encode(array($shippingAddr,$billingAddr));
         return $jsonProduct;
     }
 

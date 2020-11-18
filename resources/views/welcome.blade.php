@@ -114,11 +114,7 @@
                         window.location.href = "/";
                 }
                 </script>
-<<<<<<< HEAD
-                <a href="/order" class="cart-nav"><img src="./amado-master/img/core-img/cart.png" alt=""> Order ( <span id="NumberCart">  </span> )</a>
-=======
                 <a href="/order" class="cart-nav"><img src="./amado-master/img/core-img/cart.png" alt=""> Cart <span>(0)</span></a>
->>>>>>> 766679a358d3cd50b06a77602eac2930d0dc8e0c
                 <a href="#" class="fav-nav"><img src="./amado-master/img/core-img/favorites.png" alt=""> Favourite</a>
             </div>
 
