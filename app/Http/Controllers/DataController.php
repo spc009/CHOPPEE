@@ -18,7 +18,6 @@ class DataController extends Controller
         $jsonScale = json_encode($distinctscale);
         return view('index',['jsonProduct'=>$jsonProduct, 'jsonVendor'=>$jsonVendor, 'jsonScale'=>$jsonScale]);
     }
-
     public function employeeInfo(Request $request){
         $data = DB::select("select * from employees where employeeNumber = '$request->showUser'");
         $jsonEmployee = json_encode($data);
@@ -27,7 +26,7 @@ class DataController extends Controller
 
     public function mnproduct(){
         $data = DB::select('select * from products');
-        $datastock = DB::select('select * from stock');
+        $datastock = DB::select('select * from products');
         $jsonProduct = json_encode($data);
         $jsonstock = json_encode($datastock);
         return view('manage-product',['jsonProduct'=>$jsonProduct, 'jsonstock'=>$jsonstock]);
@@ -194,8 +193,8 @@ class DataController extends Controller
     public function login(Request $request)
     {
         // normal function
-        // $x = sha1($request->psw);
-        $employeekey = DB::select("select * from employees where employeeNumber like '$request->uname' and lastName like '$request->psw'");
+        $x = sha1($request->psw);
+        $employeekey = DB::select("select * from passwords where employeeNumber like '$request->uname' and passwords like '$x'");
         if($employeekey != null)
         {
             $employeeDetail = DB::select("select * from employees where employeeNumber = '$request->uname' ");
@@ -210,14 +209,14 @@ class DataController extends Controller
         {
             return redirect ('/')-> with('alert', 'wrong username or password');
         }
-        // $data = DB::select("select employeeNumber from employees");
-        // $ans= '';
-        // foreach($data as $a){
-        //     $x = sha1($a->employeeNumber);
-        //     DB::insert("insert into passwords values ($a->employeeNumber, '$x')");
-        //     $ans ++;
-        // }
-        // return redirect ('/')-> with('alert', success);
+        $data = DB::select("select employeeNumber from employees");
+        $ans= '';
+        foreach($data as $a){
+            $x = sha1($a->employeeNumber);
+            DB::insert("insert into passwords values ($a->employeeNumber, '$x')");
+            $ans ++;
+        }
+        return redirect ('/')-> with('alert', success);
     }
     public function reqSell(Request $request){
         $x = DB::select("select * from employees where employeeNumber = '$request->employeeNumber' and jobTitle like '%'||'Sale'||'%'");
@@ -334,10 +333,10 @@ class DataController extends Controller
     }
 
     public function promotion(){
-        // $data = DB::select("delete from promotion where expairDate = date('now','localtime')");
-        // $pro = DB::select('select * from promotion');
-        // $jsonpro = json_encode($pro);
-        // return view('welcome',['jsonpro'=>$jsonpro]);
+        $data = DB::select("delete from promotion where expairDate = date('now','localtime')");
+        $pro = DB::select('select * from promotion');
+        $jsonpro = json_encode($pro);
+        return view('welcome',['jsonpro'=>$jsonpro]);
         return view('welcome');
     }
 
