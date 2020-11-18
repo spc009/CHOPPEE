@@ -181,8 +181,10 @@ class DataController extends Controller
         DB::update("update customers set points =$x where customerNumber like '$request->customerNumber'");
 
         $x=json_encode($request->code);
-        //update qty of promotion in promotion table
-        // DB::update("update promotion set qty =qty-1 where promotionCode like '$x'");
+        
+            //update qty of promotion in promotion table
+            
+        DB::update("update promotion set qty =qty-1 where promotionCode like '$request->code'");
 
         //delete cart
         DB::delete('delete from cart');
@@ -365,7 +367,7 @@ class DataController extends Controller
         return [$c,json_encode($qty)];
     }
     public function deletepromotion(){
-        $data = DB::select("delete from promotion where expairDate = date('now','localtime')");
+        $data = DB::select("delete from promotion where expairDate = date('now','localtime') or qty = 0");
         // // $data = DB::select("delete from promotion where expairDate = strftime('%Y-%m-%d',date('now'))");
         $data2 = DB::select('select * from promotion');
         return $data2;

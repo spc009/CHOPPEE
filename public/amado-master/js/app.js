@@ -270,25 +270,25 @@ function stockin(stock){
     document.getElementById("stock").innerHTML = tablestock;
 }
 
-//promotion
-// function promotion(promo){
-//     tablepromotion = "";
-//     promo.forEach( function(a) {
-//         //deletepromotion();
-//     tablepromotion += `
-//         <tr>
-//             <td><h5>${a.promotionId}</h5></td>
-//             <td><h5>${a.promotionCode}</h5></td>
-//             <td class="cart_product_desc">
-//                 <h5>${a.qty}</h5>
-//             </td>
-//             <td><h5>${a.detail}</h5></td>
-//             <td><h5>${a.expairDate}</h5></td>
-//         </tr>
-//         `
-//     });
-//     document.getElementById("promotion").innerHTML = tablepromotion;
-// }
+// promotion
+function promotion(promo){
+    tablepromotion = "";
+    promo.forEach( function(a) {
+        //deletepromotion();
+    tablepromotion += `
+        <tr>
+            <td><h5>${a.promotionId}</h5></td>
+            <td><h5>${a.promotionCode}</h5></td>
+            <td class="cart_product_desc">
+                <h5>${a.qty}</h5>
+            </td>
+            <td><h5>${a.detail}</h5></td>
+            <td><h5>${a.expairDate}</h5></td>
+        </tr>
+        `
+    });
+    document.getElementById("promotion").innerHTML = tablepromotion;
+}
 //---------------Pop Up ----------------//
 //Customer
 function PopUpCustomer(a, editAble){
@@ -1325,8 +1325,8 @@ function AddToCart(orderNumber,Name,price, pdCode, num ,n){
         url: '/insertToCart',
         data: product,
         success: function (data){
-            // promotion(data);
             NumberCart();
+            promotion(data);
         }
     });
 
