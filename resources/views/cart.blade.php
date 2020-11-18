@@ -50,7 +50,7 @@
         <div class="mobile-nav">
             <!-- Navbar Brand -->
             <div class="amado-navbar-brand">
-                <a href="/welcome"><img src="./amado-master/img/core-img/logoGunpla1.png" alt=""></a>
+                <a href="/welcome"><img src="./amado-master/img/core-img/ChoppeeBlue.png" alt=""></a>
             </div>
             <!-- After Login interface -->
             <!-- <div class="amado-navbar-user" id="uname">
@@ -71,7 +71,7 @@
             </div> -->
             <!-- Logo -->
             <div class="logo">
-                <a href="/welcome"><img src="./amado-master/img/core-img/logoGunpla1.png" alt=""></a>
+                <a href="/welcome"><img src="./amado-master/img/core-img/ChoppeeBlue.png" alt=""></a>
             </div>
             <p id="showUser"></p>
             <script>
@@ -232,7 +232,7 @@
     <footer class="footer_area">
         <div>
             <!-- Logo -->
-            <a href="/welcome" style="padding:0px 0px 0px 50px"><img src="./amado-master/img/core-img/logoDarkBG.png" alt=""></a>
+            <a href="/welcome" style="padding:0px 0px 0px 50px"><img src="./amado-master/img/core-img/ChoppeeBlue.png" alt=""></a>
         </div>
     </footer>
     <!-- ##### Footer Area End ##### -->
