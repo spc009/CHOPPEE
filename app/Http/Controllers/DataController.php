@@ -18,7 +18,6 @@ class DataController extends Controller
         $jsonScale = json_encode($distinctscale);
         return view('index',['jsonProduct'=>$jsonProduct, 'jsonVendor'=>$jsonVendor, 'jsonScale'=>$jsonScale]);
     }
-
     public function employeeInfo(Request $request){
         $data = DB::select("select * from employees where employeeNumber = '$request->showUser'");
         $jsonEmployee = json_encode($data);
