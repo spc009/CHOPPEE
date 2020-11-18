@@ -160,7 +160,7 @@
                                 <div class="table">
                                     <table>
                                         <thead>
-                                            <tr style="background-color:#fbb710">
+                                            <tr style="background-color:#84DBFF">
                                                 <th style="width:20%">Promotion ID</th>
                                                 <th style="width:20%">Code</th>
                                                 <th>Number</th>
