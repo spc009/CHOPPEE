@@ -17,7 +17,6 @@ function AddToOrderx(orderNumber, pdCode, num ,n){
         data: product,
         dataType: "json"
     });
-
     var i = Number(document.getElementById('NumberCart').innerText)
     i = i+Number(num);
     document.getElementById(n).value = 0;

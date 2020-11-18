@@ -173,7 +173,7 @@ function showCart(product){
                 <div class="quantity">
                     <span class="qty-minus" onclick="var effect = document.getElementById('qty${i}'); var qty = effect.value; if( !isNaN( qty ) &amp;&amp; qty &gt; 0 ) effect.value--;order_calculator();return false;"><i class="fa fa-minus" aria-hidden="true"></i></span>
                     <input type="number" class="qty-text" id="qty${i}" step="1" min="0" max="300" name="quantity" value="${a.qty}">
-                    <span class="qty-plus" onclick="var effect = document.getElementById('qty${i}'); var qty = effect.value; if( !isNaN( qty )) effect.value++;order_calculator();return false;"><i class="fa fa-plus" aria-hidden="true"></i></span>
+                    <span class="qty-plus" onclick="var effect = document.getElementById('qty${i}'); var qty = effect.value; if( !isNaN( qty )) effect.value++;order_calculator(); AddToOrderx(${a.orderNumber},${a.productCode}, effect.value ,0);return false;"><i class="fa fa-plus" aria-hidden="true"></i></span>
                 </div>
             </div>
         </td>
@@ -270,24 +270,24 @@ function stockin(stock){
 }
 
 //promotion
-function promotion(promo){
-    tablepromotion = "";
-    promo.forEach( function(a) {
-        //deletepromotion();
-    tablepromotion += `
-        <tr>
-            <td><h5>${a.promotionId}</h5></td>
-            <td><h5>${a.promotionCode}</h5></td>
-            <td class="cart_product_desc">
-                <h5>${a.qty}</h5>
-            </td>
-            <td><h5>${a.detail}</h5></td>
-            <td><h5>${a.expairDate}</h5></td>
-        </tr>
-        `
-    });
-    document.getElementById("promotion").innerHTML = tablepromotion;
-}
+// function promotion(promo){
+//     tablepromotion = "";
+//     promo.forEach( function(a) {
+//         //deletepromotion();
+//     tablepromotion += `
+//         <tr>
+//             <td><h5>${a.promotionId}</h5></td>
+//             <td><h5>${a.promotionCode}</h5></td>
+//             <td class="cart_product_desc">
+//                 <h5>${a.qty}</h5>
+//             </td>
+//             <td><h5>${a.detail}</h5></td>
+//             <td><h5>${a.expairDate}</h5></td>
+//         </tr>
+//         `
+//     });
+//     document.getElementById("promotion").innerHTML = tablepromotion;
+// }
 //---------------Pop Up ----------------//
 //Customer
 function PopUpCustomer(a, editAble){
@@ -1292,15 +1292,17 @@ function deleteCart(){
 }
 function AddToCart(orderNumber,Name,price, pdCode, num ,n){
     document.getElementById(n).value = 0;
+    // console.log(n)
     if(orderNumber != "" && orderNumber != null){
     var product = {
         "orderNumber": orderNumber,
-        "Name" : Name,
+        "orderLineNumber" : n,
         "price" : price,
         "productCode": pdCode,
         "qty": num
     };
-    NumberCart();
+    
+    // NumberCart();
     $.ajaxSetup({
         headers: {
             'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
@@ -1311,9 +1313,11 @@ function AddToCart(orderNumber,Name,price, pdCode, num ,n){
         url: '/insertToCart',
         data: product,
         success: function (data){
-            promotion(data);
+            // promotion(data);
+            NumberCart();
         }
     });
+
     }else{
         document.getElementById('error').style.display = "block";
     }
@@ -1465,4 +1469,29 @@ function ShowPayment(input) {
         `;
     });
 document.getElementById('payment_table_body').innerHTML = payment_table;
+}
+
+function AddToOrderx(orderNumber, pdCode, num ,n){
+    var product = {
+        "orderNumber":orderNumber,
+        "productCode":pdCode,
+        "qty":num
+    };
+    $.ajaxSetup({
+        headers: {
+            'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+        }
+    });
+    $.ajax({
+        type: 'post',
+        url: '/insertToCart',
+        data: product,
+        dataType: "json"
+    });
+
+    var i = Number(document.getElementById('NumberCart').innerText)
+    i = i+Number(num);
+    document.getElementById(n).value = 0;
+
+    document.getElementById('NumberCart').innerText = (i);
 }

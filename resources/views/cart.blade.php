@@ -249,6 +249,7 @@
         <script src="./amado-master/js/active.js"></script>
         <!-- DB function -->
         <script src="./amado-master/js/app.js"></script>
+        <script src="./amado-master/js/order.js"></script>
 </body>
 
 </html>

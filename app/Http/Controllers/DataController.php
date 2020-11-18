@@ -52,6 +52,13 @@ class DataController extends Controller
     }
     public function insertToCart(Request $request){
         $x = DB::select("select qty from cart where productCode ='$request->productCode'");
+        $z = DB::select("select count(*) as n from cart group by productCode");
+        if($z != null){
+            $a = $z[0]->n;
+            $a++; 
+        }else{
+            $a = 1;
+        }
         if($x != null){
             $y = $x[0]->qty+$request->qty;
             DB::update("update cart set qty = $y where productCode = '$request->productCode'");
@@ -59,7 +66,7 @@ class DataController extends Controller
         }else{
             DB::insert("
                 insert into cart(orderNumber,orderLineNumber,productCode,priceEach,qty)
-                values ('$request->orderNumber','$request->Name','$request->productCode','$request->price','$request->qty')
+                values ('$request->orderNumber','$a','$request->productCode','$request->price','$request->qty')
             ");
         }
         $data = DB::select('select * from cart');

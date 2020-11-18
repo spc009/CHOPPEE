@@ -87,10 +87,10 @@
                     window.location.href = "/";
                 }
             </script>
-            <input type="text" name="OrderID" id="orderId" placeholder="Order ID ...">
+            <input type="text" name="   ID" id="orderId" placeholder="Order ID ...">
             <!-- Cart Menu -->
             <div class="cart-fav-search mb-30">
-                <a href="/order" class="cart-nav"><img src="./amado-master/img/core-img/cart.png" alt=""> Order ( <span id="NumberCart">0</span> )</a>
+                <a href="/order" class="cart-nav"><img src="./amado-master/img/core-img/cart.png" alt=""> Order ( <span id="NumberCart">  </span> )</a>
                 <!-- <a href="#" onclick="console.log(GetOrder())" class="fav-nav"><img src="./amado-master/img/core-img/favorites.png" alt=""> Favourite</a> -->
             </div>
 
@@ -219,7 +219,7 @@
     <script src="./amado-master/js/active.js"></script>
     <!-- DB function -->
     <script src="./amado-master/js/app.js"></script>
-
+    <script src="./amado-master/js/order.js"></script>
 
 
 </body>
