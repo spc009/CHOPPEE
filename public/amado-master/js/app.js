@@ -60,7 +60,7 @@ function getAddress(customerNumber,editAble,redioname,id){
             var d = JSON.parse(data[1]);
             var points = document.getElementById("points");
             if(points != null){
-                points.innerHTML = d[0].point;
+                points.innerHTML = d[0].points;
             }
 
             // console.log(x[0].customerNumber);
@@ -1241,7 +1241,7 @@ function AddToOrder(){
         if (radios[i].checked){
                 shippingAddr = radios[i].value;
             }
-        }
+    }
     radios = document.getElementsByName('addressArea2');
         for (var i = 0, length = radios.length; i < length; i++){
             if (radios[i].checked){
@@ -1257,12 +1257,12 @@ function AddToOrder(){
         shipDate = "order date +7";
     }
     var Billing = {
-        'customerNumber' : document.getElementById("searchID").value.toString(),
+        'customerNumber' : document.getElementById("searchID").value,
         'Point' : document.getElementById("mempoint").innerText,
         'shippingDate' : shipDate,
         'shippingAddr' : shippingAddr,
         'billingAddr' : billingAddr,
-        'code' : code
+        'code' : code 
     };
     $.ajaxSetup({
         headers: {
