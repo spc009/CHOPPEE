@@ -214,34 +214,36 @@
     <!-- <div class="amado-big-button-group clearfix"> -->
     <div class="welcome-area clearfix mt-70">
         <a href="/mnod" class="btn amado-big-btn">
-            <br><br><br>
-            <img src="./amado-master/img/core-img/shopping_cart.png"><br><br>
+            <br><br>
+            <img src="./amado-master/img/core-img/shopping-bag.svg"><br><br>
             Order
         </a>
         <!-- order-status.blade.php -->
         <!-- sale only href="/mnpd" -->
         <button onclick="reqTomnpd(sessionStorage.getItem('employeeNumber'))" class="btn amado-big-btn">
-            <img src="./amado-master/img/core-img/stock.png"><br><br>
+            <br><br>
+            <img src="./amado-master/img/core-img/stock.svg"><br><br>
             Product & Stock
         </button>
         <a href="/shipping" class="btn amado-big-btn">
-            <br><br><br>
-            <img src="./amado-master/img/core-img/shipping_details.png"><br><br>
+            <br><br>
+            <img src="./amado-master/img/core-img/delivery-truck.svg"><br><br>
             Shipping Details<br>& Paymants
         </a>
         <!-- sale only -->
         <button onclick="reqTomnem(sessionStorage.getItem('employeeNumber'))" class="btn amado-big-btn">
-            <img src="./amado-master/img/core-img/employee.png"><br><br>
+            <br><br>
+            <img src="./amado-master/img/core-img/customer-service.svg"><br><br>
             Employee
         </button>
         <a href="/mncus" class="btn amado-big-btn">
-            <br><br><br>
-            <img src="./amado-master/img/core-img/customers.png"><br><br>
+            <br><br>
+            <img src="./amado-master/img/core-img/teamwork.svg"><br><br>
             Customers
         </a>
         <a href="#" onclick="reqTomnpr(sessionStorage.getItem('employeeNumber')),deletepromotion()" class="btn amado-big-btn">
             <br><br><br>
-            <img src="./amado-master/img/core-img/promotion.png"><br><br>
+            <img src="./amado-master/img/core-img/gift-box.svg"><br><br>
             Promotion
         </a>
     </div>
