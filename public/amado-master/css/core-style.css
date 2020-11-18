@@ -652,12 +652,12 @@ img {
   padding: 15px 15px 15px 15px;
   font-size: 24px;
   line-height: 56px;
-  background-color: #131212;
+  background-color:#2196F3;
   font-weight: 400; }
   .amado-big-btn.active, .amado-big-btn:hover, .amado-big-btn:focus {
     font-size: 24px;
     color: #ffffff;
-    background-color: #fb8210; }
+    background-color: #fff56a; }
   @media only screen and (min-width: 992px) and (max-width: 1199px) {
     .amado-big-btn {
       width: 50%; } }

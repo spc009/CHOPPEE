@@ -187,8 +187,8 @@ class DataController extends Controller
     public function login(Request $request)
     {
         // normal function
-        // $x = sha1($request->psw);
-        $employeekey = DB::select("select * from employees where employeeNumber like '$request->uname' and lastName like '$request->psw'");
+        $x = sha1($request->psw);
+        $employeekey = DB::select("select * from passwords where employeeNumber like '$request->uname' and passwords like '$x'");
         if($employeekey != null)
         {
             $employeeDetail = DB::select("select * from employees where employeeNumber = '$request->uname' ");
@@ -203,14 +203,14 @@ class DataController extends Controller
         {
             return redirect ('/')-> with('alert', 'wrong username or password');
         }
-        // $data = DB::select("select employeeNumber from employees");
-        // $ans= '';
-        // foreach($data as $a){
-        //     $x = sha1($a->employeeNumber);
-        //     DB::insert("insert into passwords values ($a->employeeNumber, '$x')");
-        //     $ans ++;
-        // }
-        // return redirect ('/')-> with('alert', success);
+        $data = DB::select("select employeeNumber from employees");
+        $ans= '';
+        foreach($data as $a){
+            $x = sha1($a->employeeNumber);
+            DB::insert("insert into passwords values ($a->employeeNumber, '$x')");
+            $ans ++;
+        }
+        return redirect ('/')-> with('alert', success);
     }
     public function reqSell(Request $request){
         $x = DB::select("select * from employees where employeeNumber = '$request->employeeNumber' and jobTitle like '%'||'Sale'||'%'");
@@ -327,10 +327,10 @@ class DataController extends Controller
     }
 
     public function promotion(){
-        // $data = DB::select("delete from promotion where expairDate = date('now','localtime')");
-        // $pro = DB::select('select * from promotion');
-        // $jsonpro = json_encode($pro);
-        // return view('welcome',['jsonpro'=>$jsonpro]);
+        $data = DB::select("delete from promotion where expairDate = date('now','localtime')");
+        $pro = DB::select('select * from promotion');
+        $jsonpro = json_encode($pro);
+        return view('welcome',['jsonpro'=>$jsonpro]);
         return view('welcome');
     }
 
