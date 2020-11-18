@@ -27,7 +27,7 @@ class DataController extends Controller
 
     public function mnproduct(){
         $data = DB::select('select * from products');
-        $datastock = DB::select('select productCode,quantityInStock from products ');
+        $datastock = DB::select('select * from products');
         $jsonProduct = json_encode($data);
         $jsonstock = json_encode($datastock);
         return view('manage-product',['jsonProduct'=>$jsonProduct, 'jsonstock'=>$jsonstock]);
