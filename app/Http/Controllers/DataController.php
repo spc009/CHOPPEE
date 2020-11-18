@@ -65,8 +65,8 @@ class DataController extends Controller
             // return json_encode($y);
         }else{
             DB::insert("
-                insert into cart(orderNumber,orderLineNumber,productCode,priceEach,qty)
-                values ('$request->orderNumber','$a','$request->productCode','$request->price','$request->qty')
+                insert into cart(orderNumber,Name,orderLineNumber,productCode,priceEach,qty)
+                values ('$request->orderNumber','$request->Name','$a','$request->productCode','$request->price','$request->qty')
             ");
         }
         $data = DB::select('select * from cart');
@@ -152,8 +152,8 @@ class DataController extends Controller
         // ");
 
         DB::insert("
-        insert into orders(orderNumber,orderDate,requiredDate, status, customerNumber)
-        values ('$x->orderNumber','$date','$request->shippingDate','in progress','$request->customerNumber')
+        insert into orders(orderNumber,orderDate,requiredDate, status, customerNumber,comments,shippedDate)
+        values ('$x->orderNumber','$date','$request->shippingDate','in progress','$request->customerNumber','','')
         ");
 
         // insert order details each row from cart to orderdetails

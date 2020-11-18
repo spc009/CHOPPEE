@@ -162,7 +162,7 @@ function showCart(product){
             <a href="#"><img src="./amado-master/img/bg-img/cart1.jpg" alt="Product"></a>
         </td>
         <td class="cart_product_desc">
-            <h5>${a.orderLineNumber}</h5>
+            <h5>${a.Name}</h5>
         </td>
         <td class="price">
             <span>${a.priceEach}</span>
@@ -170,16 +170,17 @@ function showCart(product){
         <td class="qty">
             <div class="qty-btn d-flex">
                 <p>Qty</p>
-                <div class="quantity">
-                    <span class="qty-minus" onclick="var effect = document.getElementById('qty${i}'); var qty = effect.value; if( !isNaN( qty ) &amp;&amp; qty &gt; 0 ) effect.value--;order_calculator();return false;"><i class="fa fa-minus" aria-hidden="true"></i></span>
-                    <input type="number" class="qty-text" id="qty${i}" step="1" min="0" max="300" name="quantity" value="${a.qty}">
-                    <span class="qty-plus" onclick="var effect = document.getElementById('qty${i}'); var qty = effect.value; if( !isNaN( qty )) effect.value++;order_calculator(); AddToOrderx(${a.orderNumber},${a.productCode}, effect.value ,0);return false;"><i class="fa fa-plus" aria-hidden="true"></i></span>
-                </div>
+                <p><span id="qty${i}">${a.qty}</span></p>
             </div>
         </td>
     </tr>`;
     i++;
     });
+    // <div class="quantity">
+    //                <!-- <span class="qty-minus" onclick="var effect = document.getElementById('qty${i}'); var qty = effect.value; if( !isNaN( qty ) &amp;&amp; qty &gt; 0 ) effect.value--;order_calculator();return false;"><i class="fa fa-minus" aria-hidden="true"></i></span> -->
+    //                 <input type="number" class="qty-text" id="qty${i}" step="1" min="0" max="300" name="quantity" value="${a.qty}">
+    //                 <!--<span class="qty-plus" onclick="var effect = document.getElementById('qty${i}'); var qty = effect.value; if( !isNaN( qty )) effect.value++;order_calculator(); AddToOrderx(${a.orderNumber},${a.productCode}, effect.value ,0);return false;"><i class="fa fa-plus" aria-hidden="true"></i></span> -->
+    //             </div>
     document.getElementById('order_table_body').innerHTML = tableCart;
 }
 
@@ -241,7 +242,7 @@ function showCustomer(customer) {
                     <p>${a.phone}</p>
                     <p>${a.salesRepEmployeeNumber}</p>
                     <p>${a.creditLimit}</p>
-                    <p>${a.point}</p>
+                    <p>${a.points}</p>
                 </div>
                 </a>
                 <button onclick="PopUpCustomer('${a.customerNumber}', true),getAddress(${a.customerNumber}, true, 'dont need', 'addressArea')" class="btn amado-btn">Edit</button>
@@ -335,7 +336,7 @@ function PopUpCustomer(a, editAble){
                     <p>Phone: <input type="text" id="cusphone" name="text" value="${b.phone}"></p>
                     <p>SalesRep: <input type="text" id="salerep" name="text" value="${b.salesRepEmployeeNumber}"></p>
                     <p>CreditLimit: <input type="text" id="cuslimit" name="text" value="${b.creditLimit}"></p>
-                    <p>Point: <input type="text" id="cuspoint" name="text" value="${b.point}"></p>
+                    <p>Point: <input type="text" id="cuspoint" name="text" value="${b.points}"></p>
                     <br>
                     <h5>Address:</h5>
                     </div>
@@ -356,7 +357,7 @@ function PopUpCustomer(a, editAble){
                 <h6>Phone: ${b.phone}</h6>
                 <h6>SalesRep: ${b.salesRepEmployeeNumber}</h6>
                 <h6>CreditLimit: ${b.creditLimit}</h6>
-                <p class="avaibility"><i class="fa fa-circle"></i>Point: ${b.point}</p>
+                <p class="avaibility"><i class="fa fa-circle"></i>Point: ${b.points}</p>
                 <br>
                 <h5>Address:</h5>
             </div>
@@ -987,9 +988,20 @@ function updatecus(a){
 
 //Shipping
 function updateship(a){
-    var product = { "shipdate": document.getElementById("shipdate").value.toString(),
-                    "odstatus": document.getElementById("order_status").value.toString(),
-                    "shipcom": document.getElementById("shipcom").value.toString(),};
+    var shipdate = document.getElementById("shipdate").value.toString();
+    var odstatus = document.getElementById("order_status").value.toString();
+    var shipcom = document.getElementById("shipcom").value.toString();
+    
+    console.log(shipdate + odstatus + shipcom)
+
+    if (shipdate == '') shipdate = '';
+    if (odstatus == '') odstatus = '';
+    if (shipcom == '') shipcom = '';
+
+    var product = { "shipdate": shipdate,
+                    "odstatus": odstatus,
+                    "shipcom": shipcom};
+
     $.ajaxSetup({
         headers: {
             'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
@@ -1133,7 +1145,7 @@ function order_calculator(){
     var mempoint = 0;
     for (var i = 0; i < tr.length; i++) {
         var price = tr[i].getElementsByTagName("td")[2].innerText;
-        var num = document.getElementById(`qty${i}`).value;
+        var num = document.getElementById(`qty${i}`).innerHTML;
         sum += price * num;
     }
     mempoint = Math.floor(sum / 100) * 3;
@@ -1254,7 +1266,7 @@ function AddToOrder(){
     }
     var shipDate = document.getElementById("shipDate").value.toString();
     if(shipDate == ""){
-        shipDate = "order date +7";
+        // shipDate = "order date +7";
     }
     var Billing = {
         'customerNumber' : document.getElementById("searchID").value,
@@ -1296,7 +1308,7 @@ function AddToCart(orderNumber,Name,price, pdCode, num ,n){
     if(orderNumber != "" && orderNumber != null){
     var product = {
         "orderNumber": orderNumber,
-        "orderLineNumber" : n,
+        "Name" : Name,
         "price" : price,
         "productCode": pdCode,
         "qty": num
