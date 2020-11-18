@@ -177,11 +177,11 @@ class DataController extends Controller
          return view('welcome');
     }
 
-    public function login()
+    public function login(Request $request)
     {
         // normal function
         $x = sha1($request->psw);
-        $employeekey = DB::select("select * from employees where employeeNumber like '$request->uname' and passwords like '$request->psw'");
+        $employeekey = DB::select("select * from passwords where employeeNumber like '$request->uname' and passwords like '$x'");
         if($employeekey != null)
         {
             $employeeDetail = DB::select("select * from employees where employeeNumber = '$request->uname' ");
