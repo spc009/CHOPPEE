@@ -247,7 +247,7 @@ class DataController extends Controller
         DB::insert("insert into stock(stockNumber,stockDate,productCode,qty)
         values ('$request->snum','$request->pdate','$request->pcode','$request->pnumber')");
         $data = DB::select('select * from products');
-        $datastock = DB::select('select * from stock');
+        $datastock = DB::select('select * from products');
         $jsonProduct = json_encode(array($data,$datastock));
         return $jsonProduct;
     }
