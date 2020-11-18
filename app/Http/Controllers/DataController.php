@@ -26,7 +26,7 @@ class DataController extends Controller
 
     public function mnproduct(){
         $data = DB::select('select * from products');
-        $datastock = DB::select('select * from products');
+        $datastock = DB::select('select * from stock');
         $jsonProduct = json_encode($data);
         $jsonstock = json_encode($datastock);
         return view('manage-product',['jsonProduct'=>$jsonProduct, 'jsonstock'=>$jsonstock]);
@@ -234,7 +234,7 @@ class DataController extends Controller
     public function insertProduct(Request $request){
         $pro = DB::select("select * from products where productCode = '$request->pcode'");
         if($pro != null){
-            $qtyjson = DB::select("select quantityInStock from products where productCode = '$request->pcode'");
+            $qtyjson = DB::select("select quantityInStock from products where productCode like '$request->pcode'");
             $qtystring = $qtyjson[0]->quantityInStock;
             $qty = (int)$qtystring+(int)$request->pnumber;
             DB::update("update products set quantityInstock = ? where productCode = ?",
@@ -246,7 +246,7 @@ class DataController extends Controller
         DB::insert("insert into stock(stockNumber,stockDate,productCode,qty)
         values ('$request->snum','$request->pdate','$request->pcode','$request->pnumber')");
         $data = DB::select('select * from products');
-        $datastock = DB::select('select * from products');
+        $datastock = DB::select('select * from stock');
         $jsonProduct = json_encode(array($data,$datastock));
         return $jsonProduct;
     }
