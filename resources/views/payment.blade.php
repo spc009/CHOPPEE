@@ -189,7 +189,7 @@
                                     <div class="table">
                                         <table>
                                             <thead>
-                                                <tr style="background-color:#fbb710">
+                                                <tr style="background-color:#84DBFF">
                                                     <th style="width:25%">CustomerNumber</th>
                                                     <th style="width:25%">CheckNumber</th>
                                                     <th style="width:25%">Payment Date</th>
