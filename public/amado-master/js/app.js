@@ -1301,7 +1301,6 @@ function AddToCart(orderNumber,Name,price, pdCode, num ,n){
         "productCode": pdCode,
         "qty": num
     };
-    
     // NumberCart();
     $.ajaxSetup({
         headers: {
