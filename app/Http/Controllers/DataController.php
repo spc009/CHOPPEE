@@ -113,8 +113,10 @@ class DataController extends Controller
     }
     //and deleteFlag = 'flase'
     public function getAddress($code){
-        $address = DB::select("select * from addresses where customerNumber like '$code' and deleteFlag = 'false'");
-        $point = DB::select("select point from customers where customerNumber like '$code'");
+        // $address = DB::select("select * from addresses where customerNumber like '$code' and deleteFlag = 'false'");
+        $address = DB::select("select addressLine1,addressLine2,city,state,postalCode,country from customers where customerNumber like '$code' ");
+
+        $point = DB::select("select points from customers where customerNumber like '$code'");
         return [json_encode($address),json_encode($point)];
     }
     public function addAddress(Request $request, $code){
@@ -145,9 +147,14 @@ class DataController extends Controller
         $ProductCode = DB :: select('select distinct productCode from cart ');
         $x = $OrderNumber[0];
         $date = date('Y-m-d',time());
+        // DB::insert("
+        //     insert into orders(orderNumber,orderDate,requiredDate, status, customerNumber,shippingAddr, billingAddr)
+        //     values ('$x->orderNumber','$date','$request->shippingDate','in progress','$request->customerNumber','$request->shippingAddr', '$request->billingAddr')
+        // ");
+
         DB::insert("
-            insert into orders(orderNumber,orderDate,requiredDate, status, customerNumber,shippingAddr, billingAddr)
-            values ('$x->orderNumber','$date','$request->shippingDate','in progress','$request->customerNumber','$request->shippingAddr', '$request->billingAddr')
+        insert into orders(orderNumber,orderDate,requiredDate, status, customerNumber)
+        values ('$x->orderNumber','$date','$request->shippingDate','in progress','$request->customerNumber')
         ");
 
         // insert order details each row from cart to orderdetails
@@ -168,15 +175,15 @@ class DataController extends Controller
 
         //update point in customer table
         $z = (int)$request->Point;
-        $Point = DB::select("select point from customers where customerNumber like '$request->customerNumber'");
+        $Point = DB::select("select points from customers where customerNumber like '$request->customerNumber'");
         $x = $Point[0];
-        $y = $x->point;
+        $y = $x->points;
         $x = $z+$y;
-        DB::update("update customers set point =$x where customerNumber like '$request->customerNumber'");
+        DB::update("update customers set points =$x where customerNumber like '$request->customerNumber'");
 
         $x=json_encode($request->code);
         //update qty of promotion in promotion table
-        DB::update("update promotion set qty =qty-1 where promotionCode like '$x'");
+        // DB::update("update promotion set qty =qty-1 where promotionCode like '$x'");
 
         //delete cart
         DB::delete('delete from cart');
