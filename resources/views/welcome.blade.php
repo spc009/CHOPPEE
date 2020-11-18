@@ -82,7 +82,7 @@
         <div class="mobile-nav">
             <!-- Navbar Brand -->
             <div class="amado-navbar-brand">
-                <a href="/welcome"><img src="./amado-master/img/core-img/logoGunpla1.png" alt=""></a>
+                <a href="/welcome"><img src="./amado-master/img/core-img/ChoppeeBlue.png" alt=""></a>
             </div>
             <!-- Navbar Toggler -->
             <div class="amado-navbar-toggler" >
@@ -99,7 +99,7 @@
             </div> -->
             <!-- Logo -->
             <div class="logo">
-                <a href="/welcome"><img src="./amado-master/img/core-img/logoGunpla1.png" alt=""></a>
+                <a href="/welcome"><img src="./amado-master/img/core-img/ChoppeeBlue.png" alt=""></a>
             </div>
 
             <!-- Cart Menu -->
@@ -114,7 +114,11 @@
                         window.location.href = "/";
                 }
                 </script>
+<<<<<<< HEAD
                 <a href="/order" class="cart-nav"><img src="./amado-master/img/core-img/cart.png" alt=""> Order ( <span id="NumberCart">  </span> )</a>
+=======
+                <a href="/order" class="cart-nav"><img src="./amado-master/img/core-img/cart.png" alt=""> Cart <span>(0)</span></a>
+>>>>>>> 766679a358d3cd50b06a77602eac2930d0dc8e0c
                 <a href="#" class="fav-nav"><img src="./amado-master/img/core-img/favorites.png" alt=""> Favourite</a>
             </div>
 
@@ -242,7 +246,7 @@
             Customers
         </a>
         <a href="#" onclick="reqTomnpr(sessionStorage.getItem('employeeNumber')),deletepromotion()" class="btn amado-big-btn">
-            <br><br><br>
+            <br><br>
             <img src="./amado-master/img/core-img/gift-box.svg"><br><br>
             Promotion
         </a>
@@ -256,7 +260,7 @@
     <div class="mobile-nav">
         <!-- Navbar Brand -->
         <div class="amado-navbar-brand">
-            <a href="/welcome"><img src="./amado-master/img/core-img/logoGunpla1.png" alt=""></a>
+            <a href="/welcome"><img src="./amado-master/img/core-img/ChoppeeBlue.png" alt=""></a>
         </div>
         <!-- Navbar Toggler -->
         <div class="amado-navbar-toggler">
@@ -269,7 +273,7 @@
     <footer class="footer_area">
         <div >
         <!-- Logo -->
-        <a href="/welcome" style="padding:0px 0px 0px 50px"><img src="./amado-master/img/core-img/logoDarkBG.png" alt=""></a>
+        <a href="/welcome" style="padding:0px 0px 0px 50px"><img src="./amado-master/img/core-img/ChoppeeBlue.png" alt=""></a>
         </div>
     </footer>
     <!-- ##### Footer Area End ##### -->

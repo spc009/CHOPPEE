@@ -537,7 +537,7 @@ img {
     .mobile-nav .amado-navbar-toggler span {
       width: 28px;
       height: 3px;
-      background-color: #fbb710;
+      background-color: #84DBFF;
       display: block;
       margin-bottom: 5px;
       border-radius: 2px; }
@@ -546,7 +546,7 @@ img {
 
 /* ScrollUp */
 #scrollUp {
-  background-color: #fbb710;
+  background-color: #84DBFF;
   border-radius: 0;
   bottom: 60px;
   box-shadow: 0 2px 6px 0 rgba(0, 0, 0, 0.3);
@@ -577,7 +577,7 @@ img {
   padding: 0 7px;
   font-size: 18px;
   line-height: 56px;
-  background-color: #131212;
+  background-color: #84DBFF;
   font-weight: 400; }
   .amado-btn.active, .amado-btn:hover, .amado-btn:focus {
     font-size: 18px;
@@ -595,7 +595,7 @@ img {
   padding: 0 7px;
   font-size: 18px;
   line-height: 56px;
-  background-color: #fa9004;
+  background-color: #84DBFF;
   font-weight: 400; }
   .amado-btn-plus.active, .amado-btn-plus:hover, .amado-btn-plus:focus {
     font-size: 18px;
@@ -836,7 +836,7 @@ img {
         top: 50%;
         margin-top: -1.5px;
         left: -150px;
-        background-color: #fbb710;
+        background-color: #84DBFF;
         z-index: 10;
         content: ''; }
       .main-content-wrapper .header-area .amado-nav li a:hover, .main-content-wrapper .header-area .amado-nav li a:focus {
@@ -878,14 +878,14 @@ img {
       .main-content-wrapper .header-area .cart-fav-search a img {
         margin-right: 10px; }
       .main-content-wrapper .header-area .cart-fav-search a:hover, .main-content-wrapper .header-area .cart-fav-search a:focus {
-        color: #fbb710; }
+        color: #84DBFF; }
     .main-content-wrapper .header-area .social-info a {
       color: #b5b5b5;
       display: inline-block; }
       .main-content-wrapper .header-area .social-info a i {
         font-size: 18px; }
       .main-content-wrapper .header-area .social-info a:hover, .main-content-wrapper .header-area .social-info a:focus {
-        color: #fbb710; }
+        color: #84DBFF; }
     @media only screen and (max-width: 767px) {
       .main-content-wrapper .header-area .social-info {
         margin-bottom: 75px; } }
@@ -1046,7 +1046,7 @@ img {
           width: 25%;
           font-size: 15px;
           color: #ffffff;
-          background-color: #faa332;
+          background-color:#84DBFF;
           text-transform: capitalize;
           font-weight: 400; }
     .main-content-wrapper .cart-order-area table tbody {
@@ -1906,7 +1906,7 @@ img {
 .footer_area {
   position: relative;
   z-index: 0;
-  background-color: #252525;
+  background-color: #2196F3;
   padding: 10px 0; }
   .footer_area .single_widget_area .copywrite {
     font-size: 12px;

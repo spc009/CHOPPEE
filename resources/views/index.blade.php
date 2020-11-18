@@ -48,7 +48,7 @@
         <div class="mobile-nav">
             <!-- Navbar Brand -->
             <div class="amado-navbar-brand">
-                <a href="/"><img src="./amado-master/img/core-img/logoGunpla1.png" alt=""></a>
+                <a href="/"><img src="./amado-master/img/core-img/ChoppeeBlue.png" alt=""></a>
             </div>
             <!-- Navbar Toggler -->
             <div class="amado-navbar-toggler">
@@ -59,7 +59,7 @@
         <header class="header-area clearfix">
             <!-- Logo -->
             <div class="logo">
-                <a href="/"><img src="./amado-master/img/core-img/logoGunpla1.png" alt=""></a>
+                <a href="/"><img src="./amado-master/img/core-img/ChoppeeBlue.png" alt=""></a>
             </div>
             <!-- Cart Menu -->
             <div class="cart-fav-search mb-30">
@@ -173,7 +173,7 @@
     <footer class="footer_area">
         <div >
         <!-- Logo -->
-            <a href="/welcome" style="padding:0px 0px 0px 50px"><img src="./amado-master/img/core-img/logoDarkBG.png" alt=""></a>
+            <a href="/welcome" style="padding:0px 0px 0px 50px"><img src="./amado-master/img/core-img/ChoppeeBlue.png" alt=""></a>
         </div>
     </footer>
 
