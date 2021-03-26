@@ -1,2 +1,2 @@
-INSTRUCTION /n
-    1. Run server : php artisan serve
+<h3>INSTRUCTION</h3> 
+    <a>1. Run server : php artisan serve</a>
